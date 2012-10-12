@@ -10,22 +10,11 @@
 				.navbar-inner
 					%a{:class =>"brand",:href => "/"} SMNB
 					%ul{:class =>"nav"}
-						-if active=="index"
-							%li{:class =>"active"}
-								%a{:href =>"/"} HOME	
-						-else
-							%li 
-								%a{:href =>"/"} HOME
-						-if active=="about"
-							%li{:class =>"active"}
-								%a{:href =>"/about"} ABOUT	
-						-else
-							%li 
-								%a{:href =>"/about"} ABOUT
-						-if active=="cv"
-							%li{:class =>"active"}
-								%a{:href =>"/cv"} CV	
-						-else
-							%li 
-								%a{:href =>"/cv"} CV
+						-nav.each do |page,active|	
+							-if active
+								%li{:class =>"active"}
+									%a{:href =>page} #{page}
+							-else
+								%li
+									%a{:href =>page} #{page}
 			=yield

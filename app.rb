@@ -1,17 +1,36 @@
 require 'sinatra'
 require 'haml'
 
-
-##nav = {"index" => true,"about" => false, "cv" => false }
+nav = {"home" => true,"about" => false, "cv" => false }
 
 get '/' do
-  haml :index, :locals => {:active => "index"}
+  nav.each do |key, value|
+    nav[key] = false
+  end
+  nav["home"]=true
+  haml :index, :locals => {:nav => nav}
+end
+
+get '/home' do
+  nav.each do |key, value|
+    nav[key] = false
+  end
+  nav["home"]=true
+  haml :index, :locals => {:nav => nav}
 end
 
 get '/about' do
-  haml :about, :locals => {:active => "about"}
+  nav.each do |key, value|
+    nav[key] = false
+  end
+  nav["about"]=true
+  haml :about, :locals => {:nav => nav}
 end
 
 get '/cv' do
-  haml :cv, :locals => {:active => "cv"}
+  nav.each do |key, value|
+    nav[key] = false
+  end
+  nav["cv"]=true
+  haml :cv, :locals => {:nav => nav}
 end
