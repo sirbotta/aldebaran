@@ -1,5 +1,18 @@
 %html
-  %head
-    %title Simone Bottecchia page
-  %body
-    =yield
+	%head
+		%title Simone Bottecchia page
+		%link(rel="stylesheet" href="stylesheets/bootstrap.min.css")
+		%script{ :src => "javascripts/bootstrap.min.js" }  
+	%body
+		.container
+			.navbar
+				.navbar-inner
+					%a{:class =>"brand",:href => "#"} Title
+					%ul{:class =>"nav"}
+						%li{:class =>"active"} 
+							%a{:href =>"#"} Home
+						%li 
+							%a{:href =>"#"} Link
+						%li 
+							%a{:href =>"#"} Link
+			=yield
